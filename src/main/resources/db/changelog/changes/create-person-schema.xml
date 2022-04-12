@@ -15,7 +15,7 @@
                 <constraints nullable="false"/>
             </column>
             <column name="lastName" type="varchar(255)">
-                <constraints nullable="false"/>
+                <constraints nullable="true"/>
             </column>
         </createTable>
         <rollback>
