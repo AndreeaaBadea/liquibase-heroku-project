@@ -8,6 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.tinylog.Logger;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 public class PersonService {
 
@@ -18,7 +21,13 @@ public class PersonService {
         Person person = personRepository.save(PersonMapper.toEntity(personDto));
         Logger.info("Added person id {}.", personDto.getId());
         return PersonMapper.toDto(person);
+    }
 
+    public List<PersonDto> getAllPersons(){
+        return personRepository.findAll()
+                .stream()
+                .map(PersonMapper::toDto)
+                .collect(Collectors.toList());
     }
 
 }
