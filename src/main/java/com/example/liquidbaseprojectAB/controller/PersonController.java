@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-//@RequestMapping("/persons")
+@RequestMapping("/persons")
 public class PersonController {
 
     @Autowired
@@ -22,7 +22,7 @@ public class PersonController {
         return new ResponseEntity<PersonDto>(personService.addPerson(personDto), HttpStatus.CREATED);
     }
 
-    @GetMapping("/persons")
+    @GetMapping()
     public  ResponseEntity<List<PersonDto>> getAllPersons(){
         return new ResponseEntity<List<PersonDto>>(personService.getAllPersons(), HttpStatus.OK);
     }
