@@ -17,7 +17,7 @@ public class PersonController {
     @Autowired
     PersonService personService;
 
-    @PostMapping
+    @PostMapping()
     public ResponseEntity<PersonDto> addPerson(@RequestBody PersonDto personDto){
         return new ResponseEntity<PersonDto>(personService.addPerson(personDto), HttpStatus.CREATED);
     }
