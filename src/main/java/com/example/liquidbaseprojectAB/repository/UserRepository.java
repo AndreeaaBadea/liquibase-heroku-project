@@ -1,10 +1,10 @@
 package com.example.liquidbaseprojectAB.repository;
 
-import com.example.liquidbaseprojectAB.entity.Person;
+import com.example.liquidbaseprojectAB.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface PersonRepository extends JpaRepository<Person, Integer> {
+public interface UserRepository extends JpaRepository<User, Integer> {
 
 }
