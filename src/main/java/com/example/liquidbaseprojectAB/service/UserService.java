@@ -34,7 +34,7 @@ public class UserService {
 
     public UserDto getUserById(int id) {
         User user = userRepository.getById(id);
-        if(user == null){
+        if (user == null) {
             Logger.info("There is no user with given id.");
             throw new NoSuchUserException("There is no user with given id.");
         }

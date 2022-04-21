@@ -7,7 +7,6 @@ import com.example.liquidbaseprojectAB.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -29,21 +28,16 @@ public class UserController {
         return new ResponseEntity<List<UserDto>>(userService.getAllUsers(), HttpStatus.OK);
     }
 
-    @GetMapping("/id")
+    @GetMapping("/{id}")
     public ResponseEntity<UserDto> getUserById(@RequestParam int id){
         return new ResponseEntity<>(userService.getUserById(id), HttpStatus.OK);
     }
 
-    @DeleteMapping()
-    public ResponseEntity<String> deleteUser(@RequestParam int id){
-        return new ResponseEntity<String>("User deleted.", HttpStatus.OK);
-    }
+//    @DeleteMapping("/id")
+//    public ResponseEntity<String> deleteUser(@RequestParam int id){
+//        return new ResponseEntity<String>("User deleted.", HttpStatus.OK);
+//    }
 
-
-    @ExceptionHandler({MethodArgumentNotValidException.class})
-    public ResponseEntity<ResponseMessage> handleJsonFormatException(Exception exception){
-        return new ResponseEntity<ResponseMessage>(new ResponseMessage("INVALID INPUT"), HttpStatus.INTERNAL_SERVER_ERROR);
-    }
 
     @ExceptionHandler(NoSuchUserException.class)
     public ResponseEntity<ResponseMessage> handleNotFound(Exception exception){
