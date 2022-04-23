@@ -19,12 +19,12 @@ public class UserController {
     UserService userService;
 
     @PostMapping()
-    public ResponseEntity<UserDto> addPerson(@RequestBody UserDto userDto){
+    public ResponseEntity<UserDto> addUser(@RequestBody UserDto userDto){
         return new ResponseEntity<UserDto>(userService.addUser(userDto), HttpStatus.CREATED);
     }
 
     @GetMapping()
-    public  ResponseEntity<List<UserDto>> getAllPersons(){
+    public  ResponseEntity<List<UserDto>> getAllUsers(){
         return new ResponseEntity<List<UserDto>>(userService.getAllUsers(), HttpStatus.OK);
     }
 
@@ -33,10 +33,11 @@ public class UserController {
         return new ResponseEntity<>(userService.getUserById(id), HttpStatus.OK);
     }
 
-//    @DeleteMapping("/id")
-//    public ResponseEntity<String> deleteUser(@RequestParam int id){
-//        return new ResponseEntity<String>("User deleted.", HttpStatus.OK);
-//    }
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> deleteUser(@RequestParam int id){
+        userService.deleteUserById(id);
+        return new ResponseEntity<String>("User deleted.", HttpStatus.OK);
+    }
 
 
     @ExceptionHandler(NoSuchUserException.class)
